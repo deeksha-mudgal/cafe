@@ -1,0 +1,1338 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BIG CHILL | Cafe & Bistro</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+
+<style>
+/* ===== GENERAL STYLING ===== */
+
+:root {
+  --cream: #fffaf3;
+  --brown: #442c26;
+  --pink: #f4d8d5;
+  --rose: #d98f87;
+  --green: #66765c;
+  --white: #ffffff;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--cream);
+  color: var(--brown);
+}
+
+h1, h2, h3 {
+  font-family: 'Playfair Display', serif;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+  font-family: inherit;
+}
+
+section {
+  padding: 90px 8%;
+}
+
+.section-title {
+  text-align: center;
+  font-size: 42px;
+  margin-bottom: 15px;
+}
+
+.section-subtitle {
+  text-align: center;
+  color: #88736b;
+  margin-bottom: 45px;
+}
+
+.tag {
+  color: var(--rose);
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-size: 12px;
+  font-weight: 700;
+  text-align: center;
+  display: block;
+  margin-bottom: 12px;
+}
+
+/* ===== NAVIGATION ===== */
+
+header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: rgba(255,250,243,0.96);
+  padding: 17px 8%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 15px #442c2610;
+}
+
+.logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 27px;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+.logo span {
+  color: var(--rose);
+}
+
+nav {
+  display: flex;
+  gap: 27px;
+  align-items: center;
+}
+
+nav a {
+  font-size: 14px;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+nav a:hover {
+  color: var(--rose);
+}
+
+.cart-button {
+  border: none;
+  background: var(--brown);
+  color: white;
+  padding: 11px 19px;
+  border-radius: 30px;
+}
+
+#menuToggle {
+  display: none;
+  font-size: 25px;
+  background: none;
+  border: none;
+  color: var(--brown);
+}
+
+/* ===== HERO SECTION ===== */
+
+.hero {
+  min-height: 610px;
+  padding: 80px 8%;
+  display: flex;
+  align-items: center;
+  background:
+    linear-gradient(90deg, rgba(35,20,15,.72), rgba(35,20,15,.08)),
+    url('https://images.unsplash.com/photo-1445116572660-236099ec97a0?auto=format&fit=crop&w=1800&q=85')
+    center/cover;
+  color: white;
+}
+
+.hero-content {
+  max-width: 600px;
+}
+
+.hero-label {
+  letter-spacing: 4px;
+  color: #ffd6c9;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.hero h1 {
+  font-size: clamp(48px, 7vw, 82px);
+  line-height: 1.12;
+  margin: 20px 0;
+}
+
+.hero h1 span {
+  color: #f5c6bb;
+  font-style: italic;
+}
+
+.hero p {
+  font-size: 16px;
+  line-height: 1.9;
+  max-width: 460px;
+  margin-bottom: 30px;
+}
+
+.btn {
+  display: inline-block;
+  background: var(--rose);
+  color: white;
+  border: none;
+  padding: 15px 27px;
+  border-radius: 30px;
+  font-weight: 700;
+  transition: .3s;
+}
+
+.btn:hover {
+  background: var(--brown);
+  transform: translateY(-3px);
+}
+
+.btn-outline {
+  background: transparent;
+  border: 1px solid white;
+  margin-left: 10px;
+}
+
+/* ===== ABOUT SECTION ===== */
+
+.about {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+
+.about img {
+  width: 100%;
+  height: 440px;
+  object-fit: cover;
+  border-radius: 180px 180px 15px 15px;
+}
+
+.about-text .tag {
+  text-align: left;
+}
+
+.about-text h2 {
+  font-size: 43px;
+  margin-bottom: 22px;
+}
+
+.about-text p {
+  color: #806d64;
+  line-height: 1.9;
+  margin-bottom: 18px;
+}
+
+.about-points {
+  display: flex;
+  gap: 30px;
+  margin: 25px 0;
+}
+
+.about-points div {
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.about-points strong {
+  display: block;
+  font-family: 'Playfair Display';
+  font-size: 27px;
+  color: var(--rose);
+}
+
+/* ===== MENU SECTION ===== */
+
+.menu-section {
+  background: #f8eee6;
+}
+
+.filters {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 35px;
+}
+
+.filter-btn {
+  padding: 10px 22px;
+  border-radius: 30px;
+  border: 1px solid #e4c9bc;
+  background: transparent;
+  color: var(--brown);
+  transition: .3s;
+}
+
+.filter-btn.active,
+.filter-btn:hover {
+  background: var(--brown);
+  color: white;
+}
+
+.menu-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+}
+
+.menu-card {
+  background: white;
+  border-radius: 17px;
+  overflow: hidden;
+  transition: .3s;
+  box-shadow: 0 5px 20px #442c260a;
+}
+
+.menu-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 25px #442c261a;
+}
+
+.menu-card img {
+  width: 100%;
+  height: 215px;
+  object-fit: cover;
+}
+
+.menu-info {
+  padding: 20px;
+}
+
+.menu-info h3 {
+  font-size: 22px;
+  margin-bottom: 9px;
+}
+
+.menu-info p {
+  font-size: 13px;
+  color: #8a7971;
+  min-height: 38px;
+  line-height: 1.6;
+}
+
+.menu-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 16px;
+}
+
+.price {
+  font-weight: bold;
+  color: var(--rose);
+  font-size: 18px;
+}
+
+.add-btn {
+  background: var(--brown);
+  color: white;
+  border: none;
+  border-radius: 25px;
+  padding: 10px 17px;
+}
+
+.add-btn:hover {
+  background: var(--rose);
+}
+
+/* ===== SPECIAL OFFER ===== */
+
+.special {
+  background: var(--brown);
+  color: white;
+  text-align: center;
+  padding: 65px 8%;
+}
+
+.special h2 {
+  font-size: 42px;
+  margin: 15px 0;
+}
+
+.special p {
+  color: #e8cfc4;
+  margin-bottom: 25px;
+  line-height: 1.8;
+}
+
+/* ===== GALLERY ===== */
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 17px;
+}
+
+.gallery-grid img {
+  width: 100%;
+  height: 270px;
+  object-fit: cover;
+  border-radius: 15px;
+  transition: .4s;
+}
+
+.gallery-grid img:hover {
+  transform: scale(1.03);
+}
+
+/* ===== REVIEWS ===== */
+
+.reviews-section {
+  background: #f8eee6;
+}
+
+.review-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 23px;
+}
+
+.review-card {
+  background: white;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 5px 20px #442c2608;
+}
+
+.stars {
+  color: #e6a84e;
+  letter-spacing: 3px;
+  margin-bottom: 17px;
+}
+
+.review-card p {
+  line-height: 1.8;
+  color: #806e65;
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
+.review-card h4 {
+  font-size: 14px;
+}
+
+/* ===== RATING ===== */
+
+.rating-box {
+  text-align: center;
+  margin: 40px auto 0;
+  max-width: 500px;
+  background: white;
+  padding: 25px;
+  border-radius: 18px;
+}
+
+.rating-box h3 {
+  font-size: 24px;
+}
+
+.rating-stars {
+  margin: 15px 0;
+}
+
+.rating-stars span {
+  font-size: 32px;
+  color: #ddd;
+  cursor: pointer;
+}
+
+.rating-stars span.selected,
+.rating-stars span:hover {
+  color: #e6a84e;
+}
+
+/* ===== RESERVATION ===== */
+
+.booking {
+  background: white;
+  max-width: 700px;
+  margin: auto;
+  padding: 35px;
+  border-radius: 20px;
+  box-shadow: 0 5px 30px #442c2610;
+}
+
+.booking-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+
+.booking input,
+.booking select,
+.booking textarea {
+  width: 100%;
+  padding: 14px;
+  border: 1px solid #e7d9d0;
+  border-radius: 9px;
+  background: var(--cream);
+  font-family: inherit;
+  margin-top: 8px;
+}
+
+.booking label {
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.booking textarea {
+  height: 90px;
+  resize: vertical;
+}
+
+.booking .full {
+  grid-column: 1/-1;
+}
+
+.booking .btn {
+  width: 100%;
+}
+
+/* ===== CONTACT ===== */
+
+.contact {
+  background: #f8eee6;
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+  text-align: center;
+}
+
+.contact-card {
+  background: white;
+  border-radius: 15px;
+  padding: 30px 15px;
+}
+
+.contact-card .emoji {
+  font-size: 30px;
+  margin-bottom: 15px;
+}
+
+.contact-card h3 {
+  margin-bottom: 10px;
+}
+
+.contact-card p {
+  font-size: 14px;
+  color: #8a7971;
+  line-height: 1.8;
+}
+
+/* ===== FOOTER ===== */
+
+footer {
+  background: var(--brown);
+  color: white;
+  padding: 45px 8%;
+  text-align: center;
+}
+
+footer .logo {
+  font-size: 32px;
+  margin-bottom: 12px;
+}
+
+footer p {
+  color: #e4cfc5;
+  font-size: 13px;
+  margin: 12px 0;
+}
+
+.socials {
+  margin: 20px;
+}
+
+.socials a {
+  margin: 0 12px;
+  color: #f4c7bd;
+}
+
+.copyright {
+  border-top: 1px solid #ffffff25;
+  padding-top: 20px;
+  margin-top: 25px;
+}
+
+/* ===== TOAST MESSAGE ===== */
+
+#toast {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  background: var(--brown);
+  color: white;
+  padding: 16px 25px;
+  border-radius: 12px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: .3s;
+  z-index: 2000;
+  pointer-events: none;
+}
+
+#toast.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ===== CART MODAL ===== */
+
+.cart-modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: #0008;
+  z-index: 3000;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+}
+
+.cart-content {
+  background: white;
+  padding: 30px;
+  width: 100%;
+  max-width: 430px;
+  border-radius: 18px;
+  max-height: 85vh;
+  overflow-y: auto;
+}
+
+.cart-content h2 {
+  margin-bottom: 20px;
+}
+
+.cart-item {
+  display: flex;
+  justify-content: space-between;
+  margin: 15px 0;
+  font-size: 14px;
+}
+
+.close-cart {
+  float: right;
+  border: none;
+  background: none;
+  font-size: 22px;
+}
+
+@media(max-width:850px) {
+  nav {
+    display: none;
+    position: absolute;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    background: var(--cream);
+    padding: 25px;
+    flex-direction: column;
+  }
+
+  nav.show {
+    display: flex;
+  }
+
+  #menuToggle {
+    display: block;
+  }
+
+  .about {
+    grid-template-columns: 1fr;
+  }
+
+  .menu-grid,
+  .review-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .hero {
+    min-height: 550px;
+  }
+}
+
+@media(max-width:550px) {
+  section {
+    padding: 65px 6%;
+  }
+
+  .section-title {
+    font-size: 33px;
+  }
+
+  .hero {
+    padding: 65px 6%;
+  }
+
+  .hero h1 {
+    font-size: 48px;
+  }
+
+  .menu-grid,
+  .review-grid,
+  .gallery-grid,
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .booking-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .booking .full {
+    grid-column: auto;
+  }
+
+  .about-points {
+    gap: 15px;
+  }
+
+  .btn-outline {
+    margin: 12px 0 0;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVIGATION -->
+<header>
+  <a href="#home" class="logo">BIG <span>CHILL.</span></a>
+
+  <button id="menuToggle" aria-label="Toggle navigation">☰</button>
+
+  <nav id="navbar">
+    <a href="#home">Home</a>
+    <a href="#about">Our Story</a>
+    <a href="#menu">Menu</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#reviews">Reviews</a>
+    <a href="#booking">Reservations</a>
+    <a href="#contact">Contact</a>
+    <button class="cart-button" onclick="openCart()">
+      🛍 Cart (<span id="cartCount">0</span>)
+    </button>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-content">
+    <div class="hero-label">WELCOME TO BIG CHILL CAFE</div>
+
+    <h1>Good Food.<br>
+    Good Mood.<br>
+    <span>Big Chill.</span></h1>
+
+    <p>
+      A little corner of happiness where delicious food,
+      beautiful moments and unforgettable memories come together.
+    </p>
+
+    <a href="#menu" class="btn">Explore Our Menu →</a>
+    <a href="#booking" class="btn btn-outline">Book a Table</a>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+
+  <img
+  src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=900&q=85"
+  alt="Beautiful cafe interior">
+
+  <div class="about-text">
+    <span class="tag">OUR STORY</span>
+
+    <h2>A place to pause, sip and smile.</h2>
+
+    <p>
+      Welcome to BIG CHILL, where every cup tells a story
+      and every plate is made to bring happiness.
+      We believe that great food tastes even better
+      when shared with great people.
+    </p>
+
+    <p>
+      From creamy pastas and delicious desserts to refreshing
+      coffees and cozy conversations, we make every visit special.
+    </p>
+
+    <div class="about-points">
+      <div><strong>♡</strong> Made with Love</div>
+      <div><strong>☕</strong> Freshly Brewed</div>
+      <div><strong>✿</strong> Cozy Vibes</div>
+    </div>
+
+    <a href="#menu" class="btn">Discover More</a>
+  </div>
+</section>
+
+<!-- MENU -->
+<section class="menu-section" id="menu">
+
+  <span class="tag">MADE WITH LOVE</span>
+  <h2 class="section-title">Our Delicious Menu</h2>
+  <p class="section-subtitle">
+    A little something for every craving ♡
+  </p>
+
+  <div class="filters">
+    <button class="filter-btn active" data-filter="all">All</button>
+    <button class="filter-btn" data-filter="coffee">Coffee</button>
+    <button class="filter-btn" data-filter="food">Food</button>
+    <button class="filter-btn" data-filter="dessert">Desserts</button>
+    <button class="filter-btn" data-filter="drinks">Drinks</button>
+  </div>
+
+  <div class="menu-grid" id="menuGrid">
+
+    <!-- ITEM 1 -->
+    <div class="menu-card" data-category="coffee">
+      <img src="https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=700" alt="Iced coffee">
+      <div class="menu-info">
+        <h3>Iced Latte</h3>
+        <p>Chilled espresso with smooth, creamy milk.</p>
+        <div class="menu-bottom">
+          <span class="price">₹220</span>
+          <button class="add-btn" onclick="addToCart('Iced Latte',220)">+ Add</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="menu-card" data-category="food">
+      <img src="https://images.unsplash.com/photo-1473093295043-cdd812d0e601?w=700" alt="Pasta">
+      <div class="menu-info">
+        <h3>White Sauce Pasta</h3>
+        <p>Creamy pasta with herbs and delicious flavours.</p>
+        <div class="menu-bottom">
+          <span class="price">₹380</span>
+          <button class="add-btn" onclick="addToCart('White Sauce Pasta',380)">+ Add</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="menu-card" data-category="dessert">
+      <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=700" alt="Chocolate cake">
+      <div class="menu-info">
+        <h3>Chocolate Cake</h3>
+        <p>Rich chocolate layers with creamy frosting.</p>
+        <div class="menu-bottom">
+          <span class="price">₹250</span>
+          <button class="add-btn" onclick="addToCart('Chocolate Cake',250)">+ Add</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="menu-card" data-category="drinks">
+      <img src="https://images.unsplash.com/photo-1546173159-315724a31696?w=700" alt="Strawberry drink">
+      <div class="menu-info">
+        <h3>Strawberry Shake</h3>
+        <p>Fresh strawberry goodness in every sip.</p>
+        <div class="menu-bottom">
+          <span class="price">₹190</span>
+          <button class="add-btn" onclick="addToCart('Strawberry Shake',190)">+ Add</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="menu-card" data-category="food">
+      <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=700" alt="Burger">
+      <div class="menu-info">
+        <h3>Classic Burger</h3>
+        <p>Juicy burger with fresh veggies and cheese.</p>
+        <div class="menu-bottom">
+          <span class="price">₹290</span>
+          <button class="add-btn" onclick="addToCart('Classic Burger',290)">+ Add</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="menu-card" data-category="dessert">
+      <img src="https://images.unsplash.com/photo-1563805042-7684c019e1cb?w=700" alt="Ice cream">
+      <div class="menu-info">
+        <h3>Ice Cream Sundae</h3>
+        <p>Vanilla scoops topped with chocolate sauce.</p>
+        <div class="menu-bottom">
+          <span class="price">₹180</span>
+          <button class="add-btn" onclick="addToCart('Ice Cream Sundae',180)">+ Add</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="menu-card" data-category="coffee">
+      <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=700" alt="Cappuccino">
+      <div class="menu-info">
+        <h3>Cappuccino</h3>
+        <p>Fresh espresso topped with silky milk foam.</p>
+        <div class="menu-bottom">
+          <span class="price">₹180</span>
+          <button class="add-btn" onclick="addToCart('Cappuccino',180)">+ Add</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="menu-card" data-category="food">
+      <img src="https://images.unsplash.com/photo-1528735602780-2552fd46c7af?w=700" alt="Sandwich">
+      <div class="menu-info">
+        <h3>Grilled Sandwich</h3>
+        <p>Toasted sandwich with veggies and cheese.</p>
+        <div class="menu-bottom">
+          <span class="price">₹220</span>
+          <button class="add-btn" onclick="addToCart('Grilled Sandwich',220)">+ Add</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="menu-card" data-category="dessert">
+      <img src="https://images.unsplash.com/photo-1488477181946-6428a0291777?w=700" alt="Dessert bowl">
+      <div class="menu-info">
+        <h3>Berry Cheesecake</h3>
+        <p>Delicate cheesecake with a berry topping.</p>
+        <div class="menu-bottom">
+          <span class="price">₹270</span>
+          <button class="add-btn" onclick="addToCart('Berry Cheesecake',270)">+ Add</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- SPECIAL -->
+<section class="special">
+  <span class="tag">A LITTLE EXTRA HAPPINESS</span>
+  <h2>Life is better with coffee & cake. ♡</h2>
+  <p>Good conversations, delicious food and memories worth keeping.</p>
+  <a href="#menu" class="btn">Treat Yourself →</a>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery">
+  <span class="tag">THE BIG CHILL EXPERIENCE</span>
+  <h2 class="section-title">Aesthetic Little Moments</h2>
+  <p class="section-subtitle">
+    Good food, pretty corners and cozy vibes.
+  </p>
+
+  <div class="gallery-grid">
+    <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=700" alt="Coffee">
+    <img src="https://images.unsplash.com/photo-1559305616-3f99cd43e353?w=700" alt="Cafe ambiance">
+    <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?w=700" alt="Fresh bakery">
+    <img src="https://images.unsplash.com/photo-1551024506-0bccd828d307?w=700" alt="Donuts">
+    <img src="https://images.unsplash.com/photo-1511920170033-f8396924c348?w=700" alt="Coffee art">
+    <img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?w=700" alt="Cafe dining">
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="reviews-section" id="reviews">
+  <span class="tag">LOVE FROM OUR PEOPLE</span>
+  <h2 class="section-title">What People Say</h2>
+  <p class="section-subtitle">A little love makes our day ♡</p>
+
+  <div class="review-grid">
+    <div class="review-card">
+      <div class="stars">★★★★★</div>
+      <p>"Such a beautiful place! The food was amazing and the ambiance was just perfect."</p>
+      <h4>— A Happy Customer</h4>
+    </div>
+
+    <div class="review-card">
+      <div class="stars">★★★★★</div>
+      <p>"Loved the coffee and desserts. Definitely a place I would visit again!"</p>
+      <h4>— Coffee Lover</h4>
+    </div>
+
+    <div class="review-card">
+      <div class="stars">★★★★★</div>
+      <p>"Beautiful interiors, friendly atmosphere and delicious food. Totally worth it!"</p>
+      <h4>— Food Explorer</h4>
+    </div>
+  </div>
+
+  <div class="rating-box">
+    <h3>Rate Your Experience ♡</h3>
+    <p style="font-size:13px;color:#88736b;margin-top:8px">
+      How was your BIG CHILL experience?
+    </p>
+
+    <div class="rating-stars" id="ratingStars">
+      <span data-rating="1">★</span>
+      <span data-rating="2">★</span>
+      <span data-rating="3">★</span>
+      <span data-rating="4">★</span>
+      <span data-rating="5">★</span>
+    </div>
+
+    <p id="ratingMessage">Tap a star to rate us!</p>
+  </div>
+</section>
+
+<!-- RESERVATION -->
+<section id="booking">
+  <span class="tag">YOUR TABLE IS WAITING</span>
+  <h2 class="section-title">Book a Table</h2>
+  <p class="section-subtitle">Let's make your visit special ♡</p>
+
+  <form class="booking" id="bookingForm">
+    <div class="booking-grid">
+
+      <div>
+        <label>Your Name</label>
+        <input type="text" placeholder="Enter your name" required>
+      </div>
+
+      <div>
+        <label>Email Address</label>
+        <input type="email" placeholder="Enter your email" required>
+      </div>
+
+      <div>
+        <label>Phone Number</label>
+        <input type="tel" placeholder="Your phone number" required pattern="[0-9+\-\s]{10,15}">
+      </div>
+
+      <div>
+        <label>Number of Guests</label>
+        <select required>
+          <option value="">Select guests</option>
+          <option>1 Guest</option>
+          <option>2 Guests</option>
+          <option>3 Guests</option>
+          <option>4 Guests</option>
+          <option>5+ Guests</option>
+        </select>
+      </div>
+
+      <div>
+        <label>Date</label>
+        <input type="date" id="bookingDate" required>
+      </div>
+
+      <div>
+        <label>Time</label>
+        <input type="time" required>
+      </div>
+
+      <div class="full">
+        <label>Special Requests</label>
+        <textarea placeholder="Any special requests?"></textarea>
+      </div>
+
+      <div class="full">
+        <button class="btn" type="submit">Confirm Reservation ♡</button>
+      </div>
+
+    </div>
+  </form>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <span class="tag">COME SAY HELLO</span>
+  <h2 class="section-title">Find Us Here</h2>
+  <p class="section-subtitle">We'd love to see you!</p>
+
+  <div class="contact-grid">
+
+    <div class="contact-card">
+      <div class="emoji">📍</div>
+      <h3>Our Location</h3>
+      <p>Visit your nearest BIG CHILL outlet.<br>
+      Add your selected branch address here.</p>
+    </div>
+
+    <div class="contact-card">
+      <div class="emoji">🕒</div>
+      <h3>Opening Hours</h3>
+      <p>Monday – Sunday<br>
+      11:00 AM – 11:00 PM</p>
+    </div>
+
+    <div class="contact-card">
+      <div class="emoji">📞</div>
+      <h3>Get in Touch</h3>
+      <p>Contact your chosen outlet<br>
+      Add official contact details here.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="logo">BIG <span style="color:#f4bcb1">CHILL.</span></div>
+
+  <p>Eat well. Chill more. Repeat. ♡</p>
+
+  <div class="socials">
+    <a href="https://www.instagram.com/" target="_blank">Instagram</a>
+    <a href="https://www.facebook.com/" target="_blank">Facebook</a>
+    <a href="#contact">Contact</a>
+  </div>
+
+  <p class="copyright">
+    © 2026 BIG CHILL Café | Made with ♡
+    <br>College Project Website
+  </p>
+</footer>
+
+<!-- TOAST -->
+<div id="toast" role="status" aria-live="polite"></div>
+
+<!-- CART MODAL -->
+<div class="cart-modal" id="cartModal">
+  <div class="cart-content">
+    <button class="close-cart" onclick="closeCart()">✕</button>
+    <h2>Your Shopping Bag 🛍</h2>
+
+    <div id="cartItems"></div>
+
+    <h3 style="margin:20px 0">
+      Total: ₹<span id="cartTotal">0</span>
+    </h3>
+
+    <button class="btn" style="width:100%" onclick="checkout()">
+      Place Demo Order
+    </button>
+  </div>
+</div>
+
+<script>
+
+// ===== MOBILE NAVIGATION =====
+
+const menuToggle = document.getElementById("menuToggle");
+const navbar = document.getElementById("navbar");
+
+menuToggle.addEventListener("click", () => {
+  navbar.classList.toggle("show");
+});
+
+document.querySelectorAll("#navbar a").forEach(link => {
+  link.addEventListener("click", () => {
+    navbar.classList.remove("show");
+  });
+});
+
+// ===== MENU FILTER =====
+
+const filterButtons = document.querySelectorAll(".filter-btn");
+const menuCards = document.querySelectorAll(".menu-card");
+
+filterButtons.forEach(button => {
+
+  button.addEventListener("click", () => {
+
+    filterButtons.forEach(btn => btn.classList.remove("active"));
+    button.classList.add("active");
+
+    const filter = button.dataset.filter;
+
+    menuCards.forEach(card => {
+
+      if (filter === "all" || card.dataset.category === filter) {
+        card.style.display = "block";
+      } else {
+        card.style.display = "none";
+      }
+
+    });
+
+  });
+
+});
+
+// ===== TOAST MESSAGE =====
+
+let toastTimer;
+
+function showToast(message) {
+
+  const toast = document.getElementById("toast");
+
+  toast.textContent = message;
+  toast.classList.add("show");
+
+  clearTimeout(toastTimer);
+
+  toastTimer = setTimeout(() => {
+    toast.classList.remove("show");
+  }, 2500);
+
+}
+
+// ===== SHOPPING CART =====
+
+let cart = [];
+
+function addToCart(name, price) {
+
+  const existing = cart.find(item => item.name === name);
+
+  if (existing) {
+    existing.quantity++;
+  } else {
+    cart.push({
+      name: name,
+      price: price,
+      quantity: 1
+    });
+  }
+
+  updateCart();
+
+  showToast(name + " added to your cart! ♡");
+
+}
+
+function updateCart() {
+
+  const count = cart.reduce(
+    (sum, item) => sum + item.quantity, 0
+  );
+
+  document.getElementById("cartCount").textContent = count;
+
+  const container = document.getElementById("cartItems");
+
+  container.innerHTML = "";
+
+  let total = 0;
+
+  cart.forEach((item, index) => {
+
+    total += item.price * item.quantity;
+
+    container.innerHTML += `
+      <div class="cart-item">
+        <div>
+          <strong>${item.name}</strong><br>
+          ₹${item.price} × ${item.quantity}
+        </div>
+
+        <div>
+          <button onclick="changeQuantity(${index},-1)">−</button>
+          <button onclick="changeQuantity(${index},1)">+</button>
+        </div>
+      </div>
+    `;
+
+  });
+
+  if (cart.length === 0) {
+    container.innerHTML = "<p>Your cart is empty ♡</p>";
+  }
+
+  document.getElementById("cartTotal").textContent = total;
+
+}
+
+function changeQuantity(index, amount) {
+
+  cart[index].quantity += amount;
+
+  if (cart[index].quantity <= 0) {
+    cart.splice(index, 1);
+  }
+
+  updateCart();
+
+}
+
+function openCart() {
+
+  document.getElementById("cartModal").style.display = "flex";
+
+}
+
+function closeCart() {
+
+  document.getElementById("cartModal").style.display = "none";
+
+}
+
+function checkout() {
+
+  if (cart.length === 0) {
+    showToast("Your cart is empty!");
+    return;
+  }
+
+  showToast("Demo order placed successfully! ♡");
+
+  cart = [];
+
+  updateCart();
+
+  closeCart();
+
+}
+
+// ===== CUSTOMER RATINGS =====
+
+const stars = document.querySelectorAll("#ratingStars span");
+
+stars.forEach(star => {
+
+  star.addEventListener("click", () => {
+
+    const rating = Number(star.dataset.rating);
+
+    stars.forEach(s => {
+      s.classList.toggle(
+        "selected",
+        Number(s.dataset.rating) <= rating
+      );
+    });
+
+    document.getElementById("ratingMessage").textContent =
+      "Thank you for your " + rating + " star rating! ♡";
+
+  });
+
+});
+
+// ===== RESERVATION FORM =====
+
+const bookingDate = document.getElementById("bookingDate");
+
+const today = new Date();
+const localToday = new Date(
+  today.getTime() - today.getTimezoneOffset() * 60000
+).toISOString().split("T")[0];
+
+bookingDate.min = localToday;
+
+document.getElementById("bookingForm").addEventListener(
+  "submit",
+  function(event) {
+
+    event.preventDefault();
+
+    if (!this.reportValidity()) return;
+
+    showToast("Reservation request submitted! Thank you ♡");
+
+    this.reset();
+
+    bookingDate.min = localToday;
+
+  }
+);
+
+</script>
+
+</body>
+</html>
